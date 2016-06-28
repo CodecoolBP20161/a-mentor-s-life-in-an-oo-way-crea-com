@@ -12,12 +12,20 @@ It has Staff as parent class, and inherits also from the Person abstract class.
 * ```hobbies```
     * data type: list
     * description: stores various hobbies of the Mentors
-* ```feeling```
-    * data type: list (containing strings to describe feelings)
-    * description: stores the possible feelings of the Mentor in a list
-* ```energy```
-    * data type: list (containing strings to describe the energy level)
-    * description: stores the confidence level of the Mentor
+* ```nickname```
+    * data type: string
+    * description: secret name of the Mentor
+
+## Class methods
+
+### ```create_by_csv```
+
+#### Arguments
+csv file path
+
+#### Return value
+list of mentors
+
 
 ## Instance methods
 
@@ -26,6 +34,9 @@ The constructor of the object.
 
 #### Arguments
 Inherits its arguments from the parent class (Person) and the Mixin class (Staff).
+* ```nickname```
+    * data type: string
+    * description: secret name of the Mentor, if empty, raises an error
 
 #### Return value
 ```Mentor``` object
