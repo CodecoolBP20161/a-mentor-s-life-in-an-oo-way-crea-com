@@ -14,12 +14,27 @@ None
 * ```year```
   * data type: integer
   * description: stores the year when the class started
+* ```day```
+  * data type: string
+  * description: stores the day when the class started
 * ```mentors```
    * data type: list (containing Mentor objects)
    * description: stores the mentors of the class
 * ```students```
   * data type: list (containing Student objects)
   * description: stores the students of the class
+* ```attendance```
+  * data type: list
+  * description: stores the attendance level of students. Possible values are: nobody, poor, fair, medium, good, full_house.
+* ```attention```
+  * data type: boolean
+  * description: stores the attention level of students. Possible values are: True, False
+* ```knowledge```
+  * data type: list
+  * description: stores the knowledge level of students as integers on the scale 0-10.
+* ```energy```
+  * data type: list
+  * description: stores possible energy levels as integers on the scale 0-10
 
 ## Class methods
 
