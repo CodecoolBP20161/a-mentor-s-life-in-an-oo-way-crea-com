@@ -8,6 +8,18 @@ None
 
 ## Attributes
 
+* ```first_name```
+  * data type: string
+  * description: first name of a person
+* ```last_name```
+  * data type: string
+  * description: first name of a person
+* ```year_of_birth```
+  * data type: integer
+  * description: year of person's birthday
+* ```gender```
+  * data type: string
+  * description: gender of person (male/female/notsure)
 * ```feeling```
   * data type: list
   * description: stores the 8 possible feelings as strings in a list: satisfied, happy, nervous, sad, mad, proud, energized, uncomfortable.
