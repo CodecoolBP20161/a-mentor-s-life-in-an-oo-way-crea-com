@@ -1,7 +1,7 @@
 from person import Person
 
 
-class Staff(Person):
+class Staff():
     def __init__(self, *args, **kwargs):
         super(Staff, self).__init__(*args, **kwargs)
 
