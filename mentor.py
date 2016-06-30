@@ -29,7 +29,7 @@ class Mentor(Person, Staff):
         for student in self.school.students:
             student_knowledge.append(student.knowledge_level)
         class_knowledge = int(sum(student_knowledge) / len(student_knowledge))
-        print("The knowledge level is %d" % class_knowledge)
+        print("The knowledge level is %d." % class_knowledge)
         return self
 
     def share_knowledge(self):
@@ -44,11 +44,11 @@ class Mentor(Person, Staff):
     def do_hobby(self):
         self.feeling = random.choice(Person.FEELINGS)
         if self.feeling in Person.FEELINGS[0:4]:
-            print("I feel {}, let's do {} !".format(self.feeling, self.hobby))
+            print("This day sucked. {} feels {}, let's go {} !".format(self.nickname, self.feeling, self.hobby))
             self.feeling = "happy"
             print("It's much better to be {}.".format(self.feeling))
         else:
-            print("It's OK, I feel {}.".format(self.feeling))
+            print("It's OK, {} feels {}.".format(self.nickname, self.feeling))
         return self
 
     def gong(self):
@@ -62,12 +62,12 @@ class Mentor(Person, Staff):
             print("The school's attendance status is {}, it's so {}.".format(self.school.attendance, self.feeling))
         else:
             self.feeling = "satisfied"
-            print("The school's attendance status is {}, I feel {}.".format(self.school.attendance, self.feeling))
+            print("The school's attendance status is {}, {} feels {}.".format(self.school.attendance, self.nickname, self.feeling))
         return self
 
     def maintain_utility(self, utility):
-        print("The {} is broken, I feel {}.".format(utility.name, self.feeling))
+        print("The {} is broken, {} feels {}.".format(utility.name, self.nickname, self.feeling))
         utility.status = True
         self.feeling = "satisfied"
-        print("The {} is working again! I feel {}.".format(utility.name, self.feeling))
+        print("The {} is working again! {} feels {}.".format(utility.name, self.nickname, self.feeling))
         return self
