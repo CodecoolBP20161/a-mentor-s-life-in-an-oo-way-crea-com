@@ -13,7 +13,6 @@ class Mentor(Person, Staff):
         self.nickname = nickname
         self.hobby = hobby
         super(Mentor, self).__init__(*args, **kwargs)
-        print("{} {} is alive.".format (self.first_name, self.last_name))
 
     @classmethod
     def create_by_csv(cls, file_name):
