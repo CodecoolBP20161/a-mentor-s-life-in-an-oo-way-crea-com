@@ -9,7 +9,10 @@ class Person(object):
         self.gender = gender
         self.energy_level = 1
         self.feeling = "neutral"
-        super().__init__(*args, **kwargs)
+        super(Person, self).__init__(*args, **kwargs)
+
+    def set_school(self, school):
+        self.school = school
 
     def drink_coffee(self):
         self.feeling = "energized"
@@ -18,5 +21,5 @@ class Person(object):
 
     def lunch_break(self):
         self.energy_level += 2
-        # + codecool_class attention!!
+        self.school.attention = True
         return self
