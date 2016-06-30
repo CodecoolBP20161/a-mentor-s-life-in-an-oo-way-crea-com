@@ -4,6 +4,7 @@ import random
 from person import Person
 from staff import Staff
 from student import Student
+from utility import Utility
 
 
 class Mentor(Person, Staff):
@@ -26,15 +27,15 @@ class Mentor(Person, Staff):
                 mentor_list.append(Mentor(line[0], line[1], line[2], line[3], line[4], line[5]))
         return mentor_list
 
-    def check_energy(self, class_energy=None, file_name="students.csv"):
+    def check_energy(self, file_name="students.csv"):
         student_energy = []
         path = os.path.abspath("./data/%s" % file_name)
         with open(path) as csvfile:
-            reader = csv.reader(csvfile)
+            reader = csv.reader(csvfile, delimiter=",")
             for line in reader:
                 student_energy.append(int(line[5]))
-            return student_energy
-            #  class_energy = sum(student_energy)/len(student_energy)
+        class_energy = sum(student_energy) // len(student_energy)
+        return self
 
     def share_knowledge(self):
         self.feeling = "proud"
@@ -42,9 +43,8 @@ class Mentor(Person, Staff):
             self.energy_level -= 2
         return self
 
-    def do_hobby(self, hobby):
+    def do_hobby(self):
         self.feeling = random.choice(Person.FEELINGS)
-        self.hobby = hobby
         if self.feeling == "nervous":
             print("Let's do %s !" % self.hobby)
             self.feeling = "happy"
@@ -59,4 +59,9 @@ class Mentor(Person, Staff):
             self.feeling = "sad"
         else:
             self.feeling = "satisfied"
+        return self
+
+    def maintain_utility(self, utility):
+        utility.status = True
+        self.feeling = "satisfied"
         return self
