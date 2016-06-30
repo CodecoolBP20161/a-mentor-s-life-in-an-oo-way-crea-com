@@ -1,11 +1,13 @@
 from person import Person
 from staff import Staff
+from student import Student
+from codecool_class import CodecoolClass
 import os
 import csv
+import random
 
 
 class Mentor(Person, Staff):
-    HOBBIES = ["cycling", "bouldering", "watching Star Wars"]
 
     def __init__(self, nickname, hobby, *args, **kwargs):
         self.nickname = nickname
@@ -34,10 +36,31 @@ class Mentor(Person, Staff):
 
     def share_knowledge(self):
         self.feeling = "proud"
+        if self.energy_level > 1:
+            self.energy_level -= 2
+        return self
 
-mentor = Mentor("Dorci", "cycling", "Dori", "Med", 1990, "female")
-# mentor.check_energy("students.csv")
-# print(student_energy)
-mentor_list = Mentor.create_by_csv("students.csv")
-print(mentor_list[0].first_name)
-print(mentor_list[1].hobby)
+    def do_hobby(self, hobby):
+        self.feeling = random.choice(Person.FEELINGS)
+        self.hobby = hobby
+        if self.feeling == "nervous":
+            print("Let's do %s !" % self.hobby)
+            self.feeling = "happy"
+        return self
+
+    def gong(self, Codecool_class):
+        Codecool_class.attention = True
+        return self
+
+    def check_attendance(self):
+        if CodecoolClass.attendance in CodecoolClass.ATTEND[0:3]:
+            self.feeling = "sad"
+        else:
+            self.feeling = "satisfied"
+        return self
+
+
+mentor_1 = Mentor("Miki", "cycling", "Miklos", "Beothy", 1978, "male")
+student_1 = Student("Dora", "Medgyasszay", 1990,"female","neutral",1) # nem lehet példányosítani!
+Mentor.check_energy(student_1)
+print(student_energy)
