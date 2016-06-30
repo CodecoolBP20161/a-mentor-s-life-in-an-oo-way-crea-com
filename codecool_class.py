@@ -11,34 +11,21 @@ class CodecoolClass:
     def __init__(self, location, year=None, day=None, mentors=None, students=None):
         self.location = location
         self.year = datetime.date.today().year
-        self.day = (datetime.datetime.now()).strftime("%A")
-        self.mentors = Mentor.create_by_csv("mentors.csv")
-        self.students = Student.create_by_csv(create_by_csv("students.csv"))
+        self.mentors = []
+        self.students = []
         self.attendance = self.ATTEND[random.randint(0, len(self.ATTEND)-1)]
-
-        self.knowledge = []
-        for student in self.students:
-            knowledge.append(int(student[7]))
-        self.knowledge = int(sum(knowledge) / len(knowledge))
-
         self.attention = False
-
-        self.energy = []
-        for student in self.students:
-            energy.append(int(student[5]))
-        self.energy = int(sum(energy) / len(energy))
 
     @classmethod
     def generate_local(cls):
         cls.location = "Budapest"
         cls.year = 2016
-        cls.day = "Monday"
         cls.mentors = Mentor.create_by_csv("mentors.csv")
-        cls.students = Student.create_by_csv(create_by_csv("students.csv"))
+        cls.students = Student.create_by_csv("students.csv")
         cls.attendance = cls.ATTEND[random.randint(0, len(cls.ATTEND)-1)]
-        cls.knowledge = 5
         cls.attention = False
-        cls.energy = 1
+        print("Codecool {} {} is generated with {} mentors and {} students.".
+              format(cls.location, cls.year, len(cls.mentors), len(cls.students)))
         return cls
 
     def find_mentor_by_full_name(self, full_name):

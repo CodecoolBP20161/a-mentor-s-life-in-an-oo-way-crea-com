@@ -10,7 +10,6 @@ class Person(object):
         self.energy_level = 1
         self.feeling = "neutral"
         super(Person, self).__init__(*args, **kwargs)
-        print("{} {} is at the school.".format(self.first_name, self.last_name))
 
     def set_school(self, school):
         self.school = school
