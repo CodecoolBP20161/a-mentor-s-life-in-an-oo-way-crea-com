@@ -1,6 +1,3 @@
-from person import Person
-
-
 class Utility():
 
     def __init__(self, name):
@@ -11,8 +8,9 @@ class Utility():
         self.school = school
 
     def beeping(self):
+        print("BEEP! BEEP!")
         self.status = False
         for mentor in self.school.mentors:
             mentor.feeling = "mad"
         print("The %s is not working." % self.name)
-        return self, Person
+        return self
