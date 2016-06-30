@@ -1,10 +1,9 @@
-from person import Person
-from staff import Staff
-from student import Student
-from codecool_class import CodecoolClass
 import os
 import csv
 import random
+from person import Person
+from staff import Staff
+from student import Student
 
 
 class Mentor(Person, Staff):
@@ -13,6 +12,9 @@ class Mentor(Person, Staff):
         self.nickname = nickname
         self.hobby = hobby
         super(Mentor, self).__init__(*args, **kwargs)
+
+    def set_school(self, school):
+        self.school = school
 
     @classmethod
     def create_by_csv(cls, file_name):
@@ -30,7 +32,7 @@ class Mentor(Person, Staff):
         with open(path) as csvfile:
             reader = csv.reader(csvfile)
             for line in reader:
-                student_energy.append(int(line([5])))
+                student_energy.append(int(line[5]))
             return student_energy
             #  class_energy = sum(student_energy)/len(student_energy)
 
@@ -48,19 +50,13 @@ class Mentor(Person, Staff):
             self.feeling = "happy"
         return self
 
-    def gong(self, Codecool_class):
-        Codecool_class.attention = True
+    def gong(self):
+        self.school.attention = True
         return self
 
     def check_attendance(self):
-        if CodecoolClass.attendance in CodecoolClass.ATTEND[0:3]:
+        if self.school.attendance in self.school.ATTEND[0:3]:
             self.feeling = "sad"
         else:
             self.feeling = "satisfied"
         return self
-
-
-mentor_1 = Mentor("Miki", "cycling", "Miklos", "Beothy", 1978, "male")
-student_1 = Student("Dora", "Medgyasszay", 1990,"female","neutral",1) # nem lehet példányosítani!
-Mentor.check_energy(student_1)
-print(student_energy)
