@@ -8,8 +8,8 @@ class Student(Person):
     knowledge = [x for x in range(1, 11)]
 
     def __init__(self, knowledge_level, confidence, *args, **kwargs):
+        self.knowledge_level = int(knowledge_level)
         self.confidence = self.CONFIDENCES[0]
-        self.knowledge_level = 1
         super(Student, self).__init__(*args, **kwargs)
 
     @classmethod
@@ -23,13 +23,10 @@ class Student(Person):
         return student_list
 
     def dojo(self):
-        for i in range(0,len(self.CONFIDENCES)-1):
+        for i in range(0, len(self.CONFIDENCES)-1):
             if self.confidence == self.CONFIDENCES[i]:
                 self.confidence = self.CONFIDENCES[i+1]
+                self.knowledge_level += 1
                 break
+        print("{} does dojo. Confidence level improved to {}.".format(self.first_name, self.confidence))
         return self
-
-student = Student("Dóri","Med",1990,"female","neutral",1)
-student.dojo()
-student.dojo()
-print(student.confidence)
